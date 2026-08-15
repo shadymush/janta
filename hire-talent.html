@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hire Talent - JANTA</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <link href="img/favicon.ico" rel="icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/alwaysstrapped.css" rel="stylesheet">
+    <link href="css/dribbble.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center">
+            <a href="index.html" class="navbar-brand text-decoration-none me-5">
+                <h1 class="m-0">JANTA</h1>
+            </a>
+            <nav class="d-none d-lg-flex gap-2">
+                <a href="index.html" class="nav-link text-decoration-none">Find Work</a>
+                <a href="freelance-gigs.html" class="nav-link text-decoration-none">Freelance Gigs</a>
+                <a href="career-guide.html" class="nav-link text-decoration-none">Career Guide</a>
+                <a href="hire-talent.html" class="nav-link active text-decoration-none">Hire Talent</a>
+            </nav>
+        </div>
+        <div class="header-actions d-flex gap-3 align-items-center">
+            <a href="#" class="text-white text-decoration-none"><i class="fa fa-bell"></i></a>
+            <div class="dropdown">
+                <div class="profile-avatar rounded-circle d-flex align-items-center justify-content-center"
+                     id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false"
+                     style="width: 40px; height: 40px; cursor: pointer; color: white; font-weight: bold; border: 2px solid rgba(255,255,255,0.2); transition: all 0.2s;">
+                    <i class="fa fa-user"></i>
+                </div>
+                <ul class="dropdown-menu dropdown-menu-end shadow-lg profile-dropdown-menu" aria-labelledby="profileDropdown" style="background-color: var(--bg-dark); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-md); padding: 8px; margin-top: 10px;">
+                    <li><a class="dropdown-item py-2 px-3 text-white rounded hover-bg-dark-accent" href="#" style="font-weight: 600; font-size: 14px; transition: background-color 0.2s;"><i class="fa fa-user me-2"></i>My Profile</a></li>
+                    <li><a class="dropdown-item py-2 px-3 text-white rounded hover-bg-dark-accent" href="index.html" style="font-weight: 600; font-size: 14px; transition: background-color 0.2s;"><i class="fa fa-sign-out-alt me-2"></i>Sign Out</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-wrapper" style="grid-template-columns: 1fr; max-width: 900px;">
+        <main>
+            <div class="bg-white p-5" style="border-radius: var(--radius-lg); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+                <div class="mb-5 text-center">
+                    <h2 class="fw-bold">Post a New Job</h2>
+                    <p class="text-muted">Fill out the details below to reach thousands of top Kenyan talents.</p>
+                </div>
+                
+                <form id="postJobForm">
+                    <!-- Company Details -->
+                    <div class="bg-pastel-gray p-4 mb-4" style="border-radius: var(--radius-md);">
+                        <h5 class="fw-bold mb-3"><i class="fa fa-building me-2"></i>Company Information</h5>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control border-0" id="company" required placeholder="Company Name" style="border-radius: var(--radius-sm);">
+                                    <label for="company">Company Name</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control border-0" id="location" required placeholder="Location" style="border-radius: var(--radius-sm);">
+                                    <label for="location">Location (e.g. Nairobi, Kenya)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Job Details -->
+                    <div class="bg-pastel-blue p-4 mb-4" style="border-radius: var(--radius-md);">
+                        <h5 class="fw-bold mb-3"><i class="fa fa-briefcase me-2"></i>Job Details</h5>
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control border-0" id="title" required placeholder="Job Title" style="border-radius: var(--radius-sm);">
+                                    <label for="title">Job Title (e.g. Senior Software Engineer)</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <select class="form-select border-0" id="employment_type" required style="border-radius: var(--radius-sm);">
+                                        <option value="On-site">On-site</option>
+                                        <option value="Remote">Remote</option>
+                                        <option value="Hybrid">Hybrid</option>
+                                    </select>
+                                    <label for="employment_type">Employment Mode</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <select class="form-select border-0" id="schedule_type" required style="border-radius: var(--radius-sm);">
+                                        <option value="Full Time">Full Time</option>
+                                        <option value="Part Time">Part Time</option>
+                                        <option value="Freelance">Freelance</option>
+                                        <option value="Internship">Internship</option>
+                                    </select>
+                                    <label for="schedule_type">Schedule Type</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control border-0" id="tags" placeholder="Tags" style="border-radius: var(--radius-sm);">
+                                    <label for="tags">Comma separated tags (e.g. Senior, React, Tech)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Salary -->
+                    <div class="bg-pastel-mint p-4 mb-4" style="border-radius: var(--radius-md);">
+                        <h5 class="fw-bold mb-3"><i class="fa fa-money-bill-wave me-2"></i>Monthly Salary Range (Ksh)</h5>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control border-0" id="salary_min" required placeholder="Minimum Salary" min="0" step="1000" style="border-radius: var(--radius-sm);">
+                                    <label for="salary_min">Minimum Salary</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control border-0" id="salary_max" required placeholder="Maximum Salary" min="0" step="1000" style="border-radius: var(--radius-sm);">
+                                    <label for="salary_max">Maximum Salary</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="statusMessage" class="alert d-none mb-4" role="alert"></div>
+
+                    <button type="submit" class="btn btn-dark w-100 py-3 fw-bold" id="submitBtn" style="border-radius: var(--radius-pill); font-size: var(--text-md);">
+                        Post Job
+                    </button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <!-- Dynamic Avatar Init -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const gradients = ['linear-gradient(135deg,#FF6B6B,#FF8E53)','linear-gradient(135deg,#4E54C8,#8F94FB)','linear-gradient(135deg,#11998e,#38ef7d)','linear-gradient(135deg,#fc00ff,#00dbde)','linear-gradient(135deg,#ec008c,#fc6767)','linear-gradient(135deg,#f12711,#f5af19)','linear-gradient(135deg,#8A2387,#E94057,#F27121)','linear-gradient(135deg,#00B4DB,#0083B0)'];
+            const icons = ['<i class="fa fa-user"></i>','<i class="fa fa-user-astronaut"></i>','<i class="fa fa-user-ninja"></i>','<i class="fa fa-user-tie"></i>','<i class="fa fa-user-circle"></i>','<i class="fa fa-user-secret"></i>','<i class="fa fa-user-shield"></i>'];
+            let grad = sessionStorage.getItem('janta_profile_grad');
+            let icon = sessionStorage.getItem('janta_profile_icon');
+            if (!grad || !icon) {
+                grad = gradients[Math.floor(Math.random() * gradients.length)];
+                icon = icons[Math.floor(Math.random() * icons.length)];
+                sessionStorage.setItem('janta_profile_grad', grad);
+                sessionStorage.setItem('janta_profile_icon', icon);
+            }
+            const av = document.getElementById('profileDropdown');
+            if (av) { av.style.background = grad; av.innerHTML = icon; }
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        document.getElementById('postJobForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const btn = document.getElementById('submitBtn');
+            const statusMessage = document.getElementById('statusMessage');
+            
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Posting...';
+            statusMessage.classList.add('d-none');
+            
+            const jobData = {
+                title: document.getElementById('title').value,
+                company: document.getElementById('company').value,
+                location: document.getElementById('location').value,
+                salary_min: parseInt(document.getElementById('salary_min').value),
+                salary_max: parseInt(document.getElementById('salary_max').value),
+                employment_type: document.getElementById('employment_type').value,
+                schedule_type: document.getElementById('schedule_type').value,
+                tags: document.getElementById('tags').value,
+                posted_date: new Date().toISOString()
+            };
+
+            try {
+                // Get existing jobs
+                let stored = localStorage.getItem('janta_jobs');
+                let jobs = stored ? JSON.parse(stored) : [];
+                
+                // Add new job
+                jobs.push(jobData);
+                
+                // Save back to localStorage
+                localStorage.setItem('janta_jobs', JSON.stringify(jobs));
+                
+                statusMessage.className = 'alert alert-success mb-4';
+                statusMessage.innerHTML = '<i class="fa fa-check-circle me-2"></i> Job posted successfully!';
+                document.getElementById('postJobForm').reset();
+            } catch (error) {
+                statusMessage.className = 'alert alert-danger mb-4';
+                statusMessage.innerHTML = '<i class="fa fa-exclamation-circle me-2"></i> Failed to save job details locally.';
+                console.error(error);
+            } finally {
+                statusMessage.classList.remove('d-none');
+                btn.disabled = false;
+                btn.innerHTML = 'Post Job';
+            }
+        });
+    </script>
+</body>
+</html>

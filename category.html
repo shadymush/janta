@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Browse Categories - JANTA</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/alwaysstrapped.css" rel="stylesheet">
+    
+    <!-- Dribbble UI Stylesheet -->
+    <link href="css/dribbble.css" rel="stylesheet">
+</head>
+
+
+<body>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center">
+            <a href="index.html" class="navbar-brand text-decoration-none me-5">
+                <h1 class="m-0">JANTA</h1>
+            </a>
+            <nav class="d-none d-lg-flex gap-2">
+                <a href="index.html" class="nav-link text-decoration-none active">Find Work</a>
+                <a href="freelance-gigs.html" class="nav-link text-decoration-none">Freelance Gigs</a>
+                <a href="career-guide.html" class="nav-link text-decoration-none">Career Guide</a>
+                <a href="hire-talent.html" class="nav-link text-decoration-none">Hire Talent</a>
+            </nav>
+        </div>
+        <div class="header-actions d-flex gap-3 align-items-center">
+            <a href="#" class="text-white text-decoration-none"><i class="fa fa-bell"></i></a>
+            <img src="img/testimonial-1.jpg" alt="Profile" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover; border: 2px solid rgba(255,255,255,0.2);">
+        </div>
+    </header>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar d-flex gap-3 flex-wrap">
+        <div class="position-relative flex-grow-1" style="max-width: 400px;">
+            <i class="fa fa-search position-absolute text-white-50" style="left: 16px; top: 16px;"></i>
+            <input type="text" class="form-control filter-input w-100 ps-5" placeholder="Search for jobs, skills, companies...">
+        </div>
+        <div class="position-relative">
+            <i class="fa fa-map-marker-alt position-absolute text-white-50" style="left: 16px; top: 16px;"></i>
+            <input type="text" class="form-control filter-input ps-5" placeholder="Nairobi, Kenya">
+        </div>
+        <button class="btn btn-dark-accent px-4 py-2" style="border-radius: var(--radius-md);"><i class="fa fa-sliders-h me-2"></i>Filters</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="dashboard-wrapper">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-filters bg-white p-4" style="border-radius: var(--radius-lg);">
+                <div class="filter-group">
+                    <h5>Working Schedule</h5>
+                    <label class="filter-checkbox"><input type="checkbox" checked> Full Time (342)</label>
+                    <label class="filter-checkbox"><input type="checkbox"> Part Time (124)</label>
+                    <label class="filter-checkbox"><input type="checkbox"> Freelance (89)</label>
+                    <label class="filter-checkbox"><input type="checkbox"> Internship (45)</label>
+                </div>
+                
+                <div class="filter-group">
+                    <h5>Employment Type</h5>
+                    <label class="filter-checkbox"><input type="checkbox" checked> Remote (234)</label>
+                    <label class="filter-checkbox"><input type="checkbox" checked> On-site (156)</label>
+                    <label class="filter-checkbox"><input type="checkbox"> Hybrid (98)</label>
+                </div>
+
+                <div class="promo-card mt-4">
+                    <h4 class="text-dark">Upgrade your Profile</h4>
+                    <p class="text-dark mb-4" style="opacity: 0.8; font-size: 14px;">Stand out to top employers in Kenya.</p>
+                    <button class="btn btn-dark w-100 py-2" style="border-radius: var(--radius-pill); font-weight: 600;">Upgrade Now</button>
+                </div>
+            </div>
+        </aside>
+        <main>
+
+            <div class="mb-4">
+                <h3 class="fw-bold">Browse by Category</h3>
+                <p class="text-muted">Find your next role by exploring top industries in Kenya.</p>
+            </div>
+            <div class="row g-4 mb-5">
+                
+                <div class="col-6 col-md-3">
+                    <a href="job-list.html" class="text-decoration-none">
+                        <div class="bg-pastel-blue p-4 text-center" style="border-radius:var(--radius-lg);transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform=''">
+                            <i class="fa fa-code fa-2x text-dark mb-3"></i>
+                            <h6 class="fw-bold text-dark mb-1">Technology</h6>
+                            <small class="text-muted">342 Jobs</small>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="job-list.html" class="text-decoration-none">
+                        <div class="bg-pastel-mint p-4 text-center" style="border-radius:var(--radius-lg);transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform=''">
+                            <i class="fa fa-chart-line fa-2x text-dark mb-3"></i>
+                            <h6 class="fw-bold text-dark mb-1">Finance & Banking</h6>
+                            <small class="text-muted">218 Jobs</small>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="job-list.html" class="text-decoration-none">
+                        <div class="bg-pastel-purple p-4 text-center" style="border-radius:var(--radius-lg);transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform=''">
+                            <i class="fa fa-paint-brush fa-2x text-dark mb-3"></i>
+                            <h6 class="fw-bold text-dark mb-1">Design & Creative</h6>
+                            <small class="text-muted">165 Jobs</small>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="job-list.html" class="text-decoration-none">
+                        <div class="bg-pastel-pink p-4 text-center" style="border-radius:var(--radius-lg);transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform=''">
+                            <i class="fa fa-heartbeat fa-2x text-dark mb-3"></i>
+                            <h6 class="fw-bold text-dark mb-1">Healthcare</h6>
+                            <small class="text-muted">203 Jobs</small>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="job-list.html" class="text-decoration-none">
+                        <div class="bg-pastel-peach p-4 text-center" style="border-radius:var(--radius-lg);transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform=''">
+                            <i class="fa fa-truck fa-2x text-dark mb-3"></i>
+                            <h6 class="fw-bold text-dark mb-1">Logistics</h6>
+                            <small class="text-muted">129 Jobs</small>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="job-list.html" class="text-decoration-none">
+                        <div class="bg-pastel-gray p-4 text-center" style="border-radius:var(--radius-lg);transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform=''">
+                            <i class="fa fa-graduation-cap fa-2x text-dark mb-3"></i>
+                            <h6 class="fw-bold text-dark mb-1">Education</h6>
+                            <small class="text-muted">97 Jobs</small>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="job-list.html" class="text-decoration-none">
+                        <div class="bg-pastel-blue p-4 text-center" style="border-radius:var(--radius-lg);transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform=''">
+                            <i class="fa fa-building fa-2x text-dark mb-3"></i>
+                            <h6 class="fw-bold text-dark mb-1">Real Estate</h6>
+                            <small class="text-muted">84 Jobs</small>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="job-list.html" class="text-decoration-none">
+                        <div class="bg-pastel-mint p-4 text-center" style="border-radius:var(--radius-lg);transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform=''">
+                            <i class="fa fa-leaf fa-2x text-dark mb-3"></i>
+                            <h6 class="fw-bold text-dark mb-1">Agriculture</h6>
+                            <small class="text-muted">76 Jobs</small>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="fw-bold m-0">Featured Jobs</h3>
+                <span class="text-muted fw-bold">1,245 Jobs</span>
+            </div>
+            <div class="job-grid" id="jobGrid"></div>
+        </main>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/jobs.js"></script>
+</body>
+</html>

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Job Detail - JANTA Dashboard</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <link href="img/favicon.ico" rel="icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/alwaysstrapped.css" rel="stylesheet">
+    <link href="css/dribbble.css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="dashboard-header d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center">
+            <a href="index.html" class="navbar-brand text-decoration-none me-5">
+                <h1 class="m-0">JANTA</h1>
+            </a>
+            <nav class="d-none d-lg-flex gap-2">
+                <a href="index.html" class="nav-link text-decoration-none">Find Work</a>
+                <a href="freelance-gigs.html" class="nav-link text-decoration-none">Freelance Gigs</a>
+                <a href="career-guide.html" class="nav-link text-decoration-none">Career Guide</a>
+                <a href="hire-talent.html" class="nav-link text-decoration-none">Hire Talent</a>
+            </nav>
+        </div>
+        <div class="header-actions d-flex gap-3 align-items-center">
+            <a href="#" class="text-white text-decoration-none"><i class="fa fa-bell"></i></a>
+            <div class="dropdown">
+                <div class="profile-avatar rounded-circle d-flex align-items-center justify-content-center"
+                     id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false"
+                     style="width: 40px; height: 40px; cursor: pointer; color: white; font-weight: bold; border: 2px solid rgba(255,255,255,0.2); transition: all 0.2s;">
+                    <i class="fa fa-user"></i>
+                </div>
+                <ul class="dropdown-menu dropdown-menu-end shadow-lg profile-dropdown-menu" aria-labelledby="profileDropdown" style="background-color: var(--bg-dark); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-md); padding: 8px; margin-top: 10px;">
+                    <li><a class="dropdown-item py-2 px-3 text-white rounded hover-bg-dark-accent" href="#" style="font-weight: 600; font-size: 14px; transition: background-color 0.2s;"><i class="fa fa-user me-2"></i>My Profile</a></li>
+                    <li><a class="dropdown-item py-2 px-3 text-white rounded hover-bg-dark-accent" href="index.html" style="font-weight: 600; font-size: 14px; transition: background-color 0.2s;"><i class="fa fa-sign-out-alt me-2"></i>Sign Out</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-wrapper" style="grid-template-columns: 1fr; max-width: 1200px;">
+        <main>
+            <div class="bg-white p-5" style="border-radius: var(--radius-lg); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+                <div class="d-flex justify-content-between align-items-start mb-5">
+                    <div class="d-flex align-items-center gap-4">
+                        <div class="company-logo-wrap bg-pastel-mint shadow-sm" style="width: 100px; height: 100px;">
+                            <img id="jd-logo" src="img/com-logo-1.jpg" alt="Company Logo">
+                        </div>
+                        <div>
+                            <h2 id="jd-title" class="fw-bold mb-2">Loading...</h2>
+                            <div id="jd-company-location" class="text-muted fw-bold"></div>
+                            <div id="jd-tags" class="job-tags mt-3"></div>
+                        </div>
+                    </div>
+                    <div class="text-end">
+                        <h3 class="fw-bold text-dark"><span id="jd-salary"></span> <span class="fs-6 text-muted">/mo</span></h3>
+                        <p id="jd-posted" class="text-muted fw-bold"></p>
+                        <div class="d-flex gap-2">
+                            <button class="save-btn border bg-light"><i class="far fa-heart"></i></button>
+                            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#applyModal" style="border-radius: var(--radius-pill); font-weight: 600; padding: 8px 32px;">Apply Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="mb-5 text-muted">
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h4 class="fw-bold mb-4">Job Description</h4>
+                        <p id="jd-desc-1" class="text-muted" style="line-height: 1.8;"></p>
+                        <p id="jd-desc-2" class="text-muted" style="line-height: 1.8;"></p>
+
+                        <h4 class="fw-bold my-4">Key Responsibilities</h4>
+                        <ul id="jd-responsibilities" class="text-muted" style="line-height: 1.8;"></ul>
+
+                        <h4 class="fw-bold my-4">Requirements</h4>
+                        <ul id="jd-requirements" class="text-muted" style="line-height: 1.8;"></ul>
+                    </div>
+                    
+                    <div class="col-lg-4">
+                        <div class="bg-pastel-blue p-4" style="border-radius: var(--radius-md);">
+                            <h5 class="fw-bold mb-4">Job Overview</h5>
+                            <div class="mb-3">
+                                <i class="fa fa-calendar-alt text-primary me-2"></i> <strong>Date Posted:</strong><br>
+                                <span id="jd-overview-date" class="text-muted ms-4"></span>
+                            </div>
+                            <div class="mb-3">
+                                <i class="fa fa-map-marker-alt text-primary me-2"></i> <strong>Location:</strong><br>
+                                <span id="jd-overview-location" class="text-muted ms-4"></span>
+                            </div>
+                            <div class="mb-3">
+                                <i class="fa fa-money-bill-alt text-primary me-2"></i> <strong>Salary:</strong><br>
+                                <span id="jd-overview-salary" class="text-muted ms-4"></span>
+                            </div>
+                            <div class="mb-0">
+                                <i class="fa fa-briefcase text-primary me-2"></i> <strong>Job Type:</strong><br>
+                                <span id="jd-overview-type" class="text-muted ms-4"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-pastel-purple p-4 mt-4" style="border-radius: var(--radius-md);">
+                            <h5 class="fw-bold mb-3">Company Details</h5>
+                            <p class="text-muted mb-0"><strong id="jd-company-name"></strong> <span id="jd-company-desc"></span></p>
+                            <a href="#" class="btn btn-link text-primary mt-2 p-0 text-decoration-none fw-bold">View Company Profile <i class="fa fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Apply Modal -->
+    <div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="applyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="border-radius: var(--radius-lg); border: none; overflow: hidden;">
+                <!-- Main Form Section -->
+                <div id="applyFormSection">
+                    <div class="modal-header border-0 bg-dark text-white p-4">
+                        <h5 class="modal-title fw-bold" id="applyModalLabel">Apply for this Job</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body p-4">
+                        <p class="text-muted mb-4">Choose your preferred application method below:</p>
+                        
+                        <form id="applyForm">
+                            <!-- Toggle Options -->
+                            <div class="d-flex gap-3 mb-4">
+                                <div class="flex-grow-1">
+                                    <input type="radio" class="btn-check" name="applyMethod" id="applyWithJanta" value="janta" checked autocomplete="off">
+                                    <label class="btn btn-outline-dark w-100 py-3 d-flex flex-column align-items-center justify-content-center gap-2" for="applyWithJanta" style="border-radius: var(--radius-md); border-width: 2px;">
+                                        <i class="fa fa-magic fa-lg"></i>
+                                        <span class="fw-bold">Apply with JANTA</span>
+                                    </label>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <input type="radio" class="btn-check" name="applyMethod" id="applyUploadCv" value="upload" autocomplete="off">
+                                    <label class="btn btn-outline-dark w-100 py-3 d-flex flex-column align-items-center justify-content-center gap-2" for="applyUploadCv" style="border-radius: var(--radius-md); border-width: 2px;">
+                                        <i class="fa fa-upload fa-lg"></i>
+                                        <span class="fw-bold">Upload Custom CV</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Upload Field Container -->
+                            <div id="uploadFieldContainer" class="d-none bg-pastel-gray p-4 mb-4" style="border-radius: var(--radius-md);">
+                                <label class="form-label fw-bold text-dark mb-2">Upload your Resume (PDF / DOCX / TXT)</label>
+                                <div class="border border-2 border-dashed border-secondary p-4 text-center bg-white" style="border-radius: var(--radius-sm); cursor: pointer;" onclick="document.getElementById('cvFileInput').click();">
+                                    <i class="fa fa-cloud-upload-alt fa-2x text-muted mb-2"></i>
+                                    <p class="mb-0 text-xs text-muted" id="uploadLabel">Drag & drop or click to choose file</p>
+                                    <input type="file" id="cvFileInput" class="d-none" accept=".pdf,.doc,.docx,.txt">
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-dark w-100 py-3 fw-bold mt-2" style="border-radius: var(--radius-pill); font-size: var(--text-md);">
+                                Submit Application
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Success Completion Screen -->
+                <div id="applySuccessSection" class="d-none text-center p-5">
+                    <style>
+                        @keyframes popIn {
+                            0% { transform: scale(0.6); opacity: 0; }
+                            70% { transform: scale(1.1); }
+                            100% { transform: scale(1); opacity: 1; }
+                        }
+                        @keyframes lineAnim {
+                            0% { stroke-dashoffset: 100; }
+                            100% { stroke-dashoffset: 0; }
+                        }
+                        .success-icon-wrap {
+                            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+                        }
+                        .svg-check {
+                            width: 80px;
+                            height: 80px;
+                        }
+                        .svg-check circle {
+                            fill: none;
+                            stroke: #10B981;
+                            stroke-width: 4;
+                        }
+                        .svg-check path {
+                            fill: none;
+                            stroke: #10B981;
+                            stroke-width: 4;
+                            stroke-linecap: round;
+                            stroke-dasharray: 100;
+                            stroke-dashoffset: 100;
+                            animation: lineAnim 0.8s 0.4s ease forwards;
+                        }
+                    </style>
+                    <div class="success-icon-wrap mb-4">
+                        <svg class="svg-check" viewBox="0 0 52 52">
+                            <circle cx="26" cy="26" r="25"/>
+                            <path d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                        </svg>
+                    </div>
+                    <h3 class="fw-bold mb-2">Application Submitted!</h3>
+                    <p class="text-muted mb-4" id="applySuccessMsg">Your application has been received. Good luck!</p>
+                    <button class="btn btn-dark px-4 py-2" data-bs-dismiss="modal" style="border-radius: var(--radius-pill);">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dynamic Avatar Init -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const gradients = ['linear-gradient(135deg,#FF6B6B,#FF8E53)','linear-gradient(135deg,#4E54C8,#8F94FB)','linear-gradient(135deg,#11998e,#38ef7d)','linear-gradient(135deg,#fc00ff,#00dbde)','linear-gradient(135deg,#ec008c,#fc6767)','linear-gradient(135deg,#f12711,#f5af19)','linear-gradient(135deg,#8A2387,#E94057,#F27121)','linear-gradient(135deg,#00B4DB,#0083B0)'];
+            const icons = ['<i class="fa fa-user"></i>','<i class="fa fa-user-astronaut"></i>','<i class="fa fa-user-ninja"></i>','<i class="fa fa-user-tie"></i>','<i class="fa fa-user-circle"></i>','<i class="fa fa-user-secret"></i>','<i class="fa fa-user-shield"></i>'];
+            let grad = sessionStorage.getItem('janta_profile_grad');
+            let icon = sessionStorage.getItem('janta_profile_icon');
+            if (!grad || !icon) {
+                grad = gradients[Math.floor(Math.random() * gradients.length)];
+                icon = icons[Math.floor(Math.random() * icons.length)];
+                sessionStorage.setItem('janta_profile_grad', grad);
+                sessionStorage.setItem('janta_profile_icon', icon);
+            }
+            const av = document.getElementById('profileDropdown');
+            if (av) { av.style.background = grad; av.innerHTML = icon; }
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Job Detail Dynamic Population -->
+    <script>
+        (function() {
+            // --- Job data descriptions keyed by title ---
+            const jobDescriptions = {
+                'Software Engineer': {
+                    desc1: 'We are looking for a talented Software Engineer to join our growing team. In this role, you will design and build scalable applications and APIs used by thousands of people daily.',
+                    desc2: 'You will collaborate with cross-functional teams including designers, product managers, and engineers to deliver outstanding software solutions on time.',
+                    responsibilities: [
+                        'Write clean, maintainable, and well-tested code.',
+                        'Participate in architecture discussions and design reviews.',
+                        'Troubleshoot and debug production issues.',
+                        'Mentor junior developers and review pull requests.'
+                    ],
+                    requirements: [
+                        '3+ years of professional software engineering experience.',
+                        'Proficiency in modern JavaScript (ES6+), React, and Node.js.',
+                        'Experience with RESTful APIs and GraphQL.',
+                        'Familiarity with cloud platforms like AWS or Google Cloud.'
+                    ]
+                },
+                'Marketing Manager': {
+                    desc1: 'We are seeking an experienced Marketing Manager to lead our marketing efforts, drive brand awareness, and develop campaigns that resonate with our customers.',
+                    desc2: 'You will own the full marketing funnel, from strategy to execution, working closely with the sales and product teams to deliver measurable growth.',
+                    responsibilities: [
+                        'Develop and execute integrated marketing campaigns.',
+                        'Manage budgets and track ROI across all channels.',
+                        'Lead content strategy and brand voice initiatives.',
+                        'Analyse market trends and competitor positioning.'
+                    ],
+                    requirements: [
+                        '4+ years of marketing experience, preferably in a fast-paced environment.',
+                        'Strong understanding of digital marketing and social media.',
+                        'Experience with analytics tools (Google Analytics, HubSpot, etc.).',
+                        "Bachelor's degree in Marketing, Business, or a related field."
+                    ]
+                },
+                'Product Designer': {
+                    desc1: 'We are looking for a Product Designer who is passionate about creating beautiful, intuitive user experiences. You will own the end-to-end design process from research to pixel-perfect delivery.',
+                    desc2: 'You will work closely with product managers and engineers to craft designs that delight users and solve real problems.',
+                    responsibilities: [
+                        'Conduct user research and synthesize insights into design decisions.',
+                        'Create wireframes, prototypes, and high-fidelity designs.',
+                        'Maintain and evolve the design system.',
+                        'Collaborate with engineering during implementation.'
+                    ],
+                    requirements: [
+                        '3+ years of product design experience.',
+                        'Expert proficiency in Figma and design systems.',
+                        'Portfolio demonstrating end-to-end design work.',
+                        'Strong understanding of UX principles and accessibility.'
+                    ]
+                },
+                'Creative Director': {
+                    desc1: 'We are looking for a visionary Creative Director to lead our creative team and define the visual identity and storytelling for our brand across all channels.',
+                    desc2: 'You will collaborate with senior leadership, clients, and multidisciplinary teams to deliver world-class creative concepts that drive business results.',
+                    responsibilities: [
+                        'Set the creative vision and direction for all brand communications.',
+                        'Lead, mentor, and inspire a team of designers and copywriters.',
+                        'Review and approve creative assets before production.',
+                        'Present creative concepts to clients and stakeholders.'
+                    ],
+                    requirements: [
+                        '8+ years of creative experience, with 3+ in a leadership role.',
+                        'Strong portfolio of brand, campaign, and digital work.',
+                        'Excellent presentation and communication skills.',
+                        'Experience in an agency or large in-house creative team.'
+                    ]
+                },
+                'Wordpress Developer': {
+                    desc1: 'We need a skilled WordPress Developer to build, maintain, and optimise our WordPress-powered websites and custom plugins with a focus on performance and clean code.',
+                    desc2: 'You will work independently in a remote-first environment and collaborate with the design team to bring compelling web experiences to life.',
+                    responsibilities: [
+                        'Develop and maintain WordPress themes and plugins.',
+                        'Optimise site speed, SEO, and Core Web Vitals.',
+                        'Integrate third-party APIs and services.',
+                        'Troubleshoot and fix WordPress issues.'
+                    ],
+                    requirements: [
+                        '2+ years of WordPress development experience.',
+                        'Proficiency in PHP, JavaScript, HTML, and CSS.',
+                        'Experience with WooCommerce and popular page builders.',
+                        'Knowledge of website security best practices.'
+                    ]
+                },
+                'Data Analyst': {
+                    desc1: 'We are seeking a Data Analyst to transform raw data into actionable insights that inform business strategy and drive growth across our organisation.',
+                    desc2: 'You will build dashboards, run analyses, and work cross-functionally to ensure data-driven decision-making at every level of the company.',
+                    responsibilities: [
+                        'Collect, clean, and analyse large datasets from multiple sources.',
+                        'Build and maintain dashboards and automated reports.',
+                        'Identify trends, patterns, and business opportunities from data.',
+                        'Present findings to stakeholders in a clear and compelling manner.'
+                    ],
+                    requirements: [
+                        '2+ years of data analysis experience.',
+                        'Proficiency in SQL, Excel, and a BI tool (Power BI, Tableau, etc.).',
+                        'Experience with Python or R for data analysis is a plus.',
+                        'Strong problem-solving and communication skills.'
+                    ]
+                }
+            };
+
+            // Default fallback content
+            const defaultDesc = {
+                desc1: 'We are looking for a talented professional to join our team. This is an exciting opportunity to make a real impact.',
+                desc2: 'You will work with a dedicated team in a dynamic environment, contributing to meaningful projects.',
+                responsibilities: [
+                    'Deliver high-quality work on time.',
+                    'Collaborate with team members across departments.',
+                    'Continuously improve processes and workflows.',
+                    'Participate in team meetings and share ideas.'
+                ],
+                requirements: [
+                    'Relevant experience in the field.',
+                    'Strong communication and teamwork skills.',
+                    'Self-motivated with a proactive attitude.',
+                    'Ability to work independently and meet deadlines.'
+                ]
+            };
+
+            const pastelColors = ['bg-pastel-peach', 'bg-pastel-mint', 'bg-pastel-purple', 'bg-pastel-blue', 'bg-pastel-pink', 'bg-pastel-gray'];
+
+            const formatSalary = (num) => num >= 1000 ? (num / 1000) + 'k' : num;
+
+            document.addEventListener('DOMContentLoaded', function() {
+                // Read job index from URL
+                const params = new URLSearchParams(window.location.search);
+                const jobId = parseInt(params.get('id'));
+
+                // Load jobs from localStorage
+                const stored = localStorage.getItem('janta_jobs');
+                const jobs = stored ? JSON.parse(stored) : [];
+
+                // Redirect back if invalid
+                if (isNaN(jobId) || jobId < 0 || jobId >= jobs.length) {
+                    document.getElementById('jd-title').textContent = 'Job not found';
+                    document.getElementById('jd-company-location').textContent = 'Please go back and select a valid job listing.';
+                    return;
+                }
+
+                const job = jobs[jobId];
+                const desc = jobDescriptions[job.title] || defaultDesc;
+
+                // Format date
+                const date = new Date(job.posted_date);
+                const formattedDate = date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+
+                // Populate logo
+                const logoNum = (jobId % 5) + 1;
+                document.getElementById('jd-logo').src = `img/com-logo-${logoNum}.jpg`;
+
+                // Populate header
+                document.getElementById('jd-title').textContent = job.title;
+                document.title = `${job.title} at ${job.company} - JANTA`;
+                document.getElementById('jd-company-location').innerHTML = `${job.company} &bull; ${job.location}`;
+
+                // Tags
+                const tagsEl = document.getElementById('jd-tags');
+                let tagsHtml = `<span class="job-tag bg-pastel-gray">${job.schedule_type}</span><span class="job-tag bg-pastel-gray">${job.employment_type}</span>`;
+                if (job.tags) {
+                    job.tags.split(',').forEach(t => {
+                        tagsHtml += `<span class="job-tag bg-pastel-gray">${t.trim()}</span>`;
+                    });
+                }
+                tagsEl.innerHTML = tagsHtml;
+
+                // Salary & posted date
+                document.getElementById('jd-salary').textContent = `Ksh ${formatSalary(job.salary_max)}`;
+                document.getElementById('jd-posted').textContent = `Posted ${formattedDate}`;
+
+                // Description
+                document.getElementById('jd-desc-1').textContent = desc.desc1;
+                document.getElementById('jd-desc-2').textContent = desc.desc2;
+
+                // Responsibilities
+                const respEl = document.getElementById('jd-responsibilities');
+                respEl.innerHTML = desc.responsibilities.map(r => `<li class="mb-2">${r}</li>`).join('');
+
+                // Requirements
+                const reqEl = document.getElementById('jd-requirements');
+                reqEl.innerHTML = desc.requirements.map(r => `<li class="mb-2">${r}</li>`).join('');
+
+                // Overview sidebar
+                document.getElementById('jd-overview-date').textContent = formattedDate;
+                document.getElementById('jd-overview-location').textContent = job.location;
+                document.getElementById('jd-overview-salary').textContent = `Ksh ${formatSalary(job.salary_max)} /mo`;
+                document.getElementById('jd-overview-type').textContent = `${job.schedule_type} · ${job.employment_type}`;
+
+                // Company details
+                document.getElementById('jd-company-name').textContent = job.company;
+                document.getElementById('jd-company-desc').textContent = `is a leading organisation based in ${job.location}, offering excellent opportunities for top talent.`;
+
+                // Apply modal title & success message
+                document.getElementById('applyModalLabel').textContent = `Apply for ${job.title}`;
+                document.getElementById('applySuccessMsg').innerHTML = `Your application for <strong>${job.title}</strong> at <strong>${job.company}</strong> has been received. Good luck!`;
+            });
+        })();
+    </script>
+
+    <script>
+        // Toggle CV Upload view
+        document.querySelectorAll('input[name="applyMethod"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const container = document.getElementById('uploadFieldContainer');
+                if (e.target.value === 'upload') {
+                    container.classList.remove('d-none');
+                } else {
+                    container.classList.add('d-none');
+                }
+            });
+        });
+
+        // Track file selection
+        document.getElementById('cvFileInput').addEventListener('change', (e) => {
+            const fileName = e.target.files[0]?.name || 'Drag & drop or click to choose file';
+            document.getElementById('uploadLabel').textContent = fileName;
+        });
+
+        // Form Submit handler with animated completion success screen
+        document.getElementById('applyForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Submitting...';
+
+            setTimeout(() => {
+                // Show completion with animation
+                document.getElementById('applyFormSection').classList.add('d-none');
+                document.getElementById('applySuccessSection').classList.remove('d-none');
+            }, 1200);
+        });
+
+        // Reset views when modal is closed
+        document.getElementById('applyModal').addEventListener('hidden.bs.modal', () => {
+            document.getElementById('applyFormSection').classList.remove('d-none');
+            document.getElementById('applySuccessSection').classList.add('d-none');
+            document.getElementById('applyForm').reset();
+            document.getElementById('uploadFieldContainer').classList.add('d-none');
+            document.getElementById('uploadLabel').textContent = 'Drag & drop or click to choose file';
+            const submitBtn = document.querySelector('#applyForm button[type="submit"]');
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = 'Submit Application';
+        });
+    </script>
+</body>
+</html>
